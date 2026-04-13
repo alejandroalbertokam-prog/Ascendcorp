@@ -422,50 +422,95 @@
     margin-top: 60px;
   }
   .fase-card {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px;
-    padding: 36px 28px;
+    padding: 0;
     transition: all 0.25s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .fase-card:hover {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.07);
     border-color: var(--teal);
     transform: translateY(-4px);
   }
+  .fase-card-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
   .fase-num-big {
     font-size: 5rem; font-weight: 900;
-    color: rgba(255,255,255,0.05);
-    position: absolute; top: -10px; right: 16px;
+    color: rgba(255,255,255,0.04);
+    position: absolute; top: -8px; right: 16px;
     line-height: 1;
+    pointer-events: none;
   }
   .fase-badge {
     display: inline-block;
     background: var(--teal);
     color: var(--white);
-    font-size: 10px; font-weight: 700;
+    font-size: 9px; font-weight: 700;
     letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 4px 12px; border-radius: 99px;
-    margin-bottom: 16px;
+    padding: 3px 10px; border-radius: 99px;
+    margin-bottom: 12px;
   }
   .fase-name {
-    font-size: 1.2rem; font-weight: 800;
-    color: var(--white); margin-bottom: 16px;
-    line-height: 1.2;
+    font-size: 1.1rem; font-weight: 800;
+    color: var(--white);
+    line-height: 1.25;
+    margin: 0;
   }
   .fase-desc {
-    font-size: 0.85rem; color: rgba(255,255,255,0.55);
+    font-size: 0.82rem; color: rgba(255,255,255,0.48);
     line-height: 1.6;
+    padding: 16px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin: 0;
+  }
+  .fase-items {
+    list-style: none;
+    display: flex; flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  .fase-items li {
+    display: flex; align-items: flex-start; gap: 0;
+    font-size: 0.79rem; color: rgba(255,255,255,0.55);
+    line-height: 1.45;
+    padding: 11px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    flex-direction: column;
+    gap: 4px;
+  }
+  .fase-items li:last-child { border-bottom: none; }
+  .fase-items li::before { display: none; }
+  .fase-tool {
+    display: inline-block;
+    font-size: 8.5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal);
+    background: rgba(61,140,160,0.12);
+    border: 1px solid rgba(61,140,160,0.25);
+    border-radius: 4px;
+    padding: 2px 7px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    align-self: flex-start;
   }
   .fase-action {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.8rem; font-weight: 600;
+    padding: 14px 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.75rem; font-weight: 700;
     color: var(--teal);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(61,140,160,0.07);
   }
 
   /* ─── HABILIDADES ─── */
@@ -812,14 +857,16 @@
     <div class="solucion-bottom">
       <div class="metodo-box reveal">
         <div class="box-title">Metodologías aplicadas</div>
-        <div class="metodo-item">Modelo 5E — Explorar → Explicar → Desarrollar → Evaluar</div>
-        <div class="metodo-item">Roles de equipo (líder, analista, innovador…)</div>
-        <div class="metodo-item">Toma de decisiones en tiempo real</div>
-        <div class="metodo-item">Feedback continuo + reflexión final</div>
+        <div class="metodo-item">Modelo 5E — Explorar → Explicar → Desarrollar → Elaborar → Evaluar</div>
+        <div class="metodo-item">Roles de equipo (líder, analista, innovador, implementador…) asignados desde el inicio</div>
+        <div class="metodo-item">Presentación de una problemática local real que el equipo debe resolver usando el dron como herramienta</div>
+        <div class="metodo-item">Project Canvas — planificación del reto antes de construir</div>
+        <div class="metodo-item">Toma de decisiones en tiempo real bajo presión de equipo</div>
+        <div class="metodo-item">Pitching final de la solución + Post-Motorola de cierre</div>
       </div>
       <div class="dif-box reveal">
         <div class="box-title">Qué lo hace diferente</div>
-        <div class="dif-item">Retos conectados con el contexto del norte de España</div>
+        <div class="dif-item">Retos conectados con el contexto del entorno local</div>
         <div class="dif-item">Tecnología como medio, no como fin</div>
         <div class="dif-item">Participación activa — todos tienen un rol</div>
         <div class="dif-item">Aprendizaje basado en experiencia real</div>
@@ -836,27 +883,58 @@
       <h2 class="section-title">3 fases. <span style="color:var(--teal)">1 transformación.</span></h2>
     </div>
     <div class="fases-grid">
+
+      <!-- FASE 1 -->
       <div class="fase-card reveal">
-        <div class="fase-num-big">1</div>
-        <div class="fase-badge">Fase 1</div>
-        <div class="fase-name">Descubrimiento</div>
-        <div class="fase-desc">Los participantes identifican su rol natural en el equipo y aprenden a colaborar desde el primer momento.</div>
-        <div class="fase-action">Identifican su rol · Aprenden a colaborar</div>
+        <div class="fase-card-header">
+          <div class="fase-num-big">1</div>
+          <div class="fase-badge">Fase 1</div>
+          <div class="fase-name">Descubrimiento<br>& Formación de equipos</div>
+        </div>
+        <div class="fase-desc">Los participantes descubren su rol natural dentro de un equipo y se agrupan de forma estratégica. A continuación se les presenta la problemática local que deberán resolver usando el dron como herramienta real.</div>
+        <ul class="fase-items">
+          <li><span class="fase-tool">Skill Roles</span>Evaluación de roles: cada participante identifica su perfil (líder, analista, innovador, implementador…)</li>
+          <li><span class="fase-tool">Horizontal Leadership</span>Formación de equipos equilibrados y asignación de responsabilidades</li>
+          <li><span class="fase-tool">Reto local</span>Presentación de la problemática real del entorno que el equipo debe atacar</li>
+          <li><span class="fase-tool">Project Canvas</span>Planificación colectiva: ¿qué solución vamos a construir y por qué?</li>
+        </ul>
+        <div class="fase-action">Roles definidos · Equipos formados · Reto activado</div>
       </div>
+
+      <!-- FASE 2 -->
       <div class="fase-card reveal">
-        <div class="fase-num-big">2</div>
-        <div class="fase-badge">Fase 2</div>
-        <div class="fase-name">Construcción</div>
-        <div class="fase-desc">Diseñan y ensamblan su propio dron en equipo. Cada decisión técnica es también una decisión de equipo.</div>
-        <div class="fase-action">Diseñan · Ensamblan · Deciden</div>
+        <div class="fase-card-header">
+          <div class="fase-num-big">2</div>
+          <div class="fase-badge">Fase 2</div>
+          <div class="fase-name">Construcción<br>& Adaptación al reto</div>
+        </div>
+        <div class="fase-desc">Cada equipo ensambla su dron desde cero y toma decisiones de diseño orientadas a resolver la problemática planteada. No es solo construir: es construir con un propósito.</div>
+        <ul class="fase-items">
+          <li><span class="fase-tool">Learning by Doing</span>Montaje completo del dron — cada rol actúa desde su función</li>
+          <li><span class="fase-tool">Decisión en tiempo real</span>El equipo adapta el diseño a los requisitos del reto local</li>
+          <li><span class="fase-tool">Gestión de conflicto</span>Los facilitadores acompañan dinámicas de liderazgo y resolución de problemas</li>
+          <li><span class="fase-tool">5E · Elaborate</span>Pruebas de vuelo intermedias para validar la solución en proceso</li>
+        </ul>
+        <div class="fase-action">Construyen · Adaptan · Lideran</div>
       </div>
+
+      <!-- FASE 3 -->
       <div class="fase-card reveal">
-        <div class="fase-num-big">3</div>
-        <div class="fase-badge">Fase 3</div>
-        <div class="fase-name">Competición</div>
-        <div class="fase-desc">Ponen a prueba el dron construido y reflexionan sobre el proceso mediante una retrospectiva estructurada.</div>
-        <div class="fase-action">Vuelan · Compiten · Reflexionan</div>
+        <div class="fase-card-header">
+          <div class="fase-num-big">3</div>
+          <div class="fase-badge">Fase 3</div>
+          <div class="fase-name">Competición,<br>Pitching & Reflexión</div>
+        </div>
+        <div class="fase-desc">Los equipos ponen a prueba su dron en un reto de vuelo y presentan su solución ante el grupo. Se cierra con una retrospectiva estructurada para consolidar aprendizajes.</div>
+        <ul class="fase-items">
+          <li><span class="fase-tool">Reto final</span>Competición de vuelo: ¿qué equipo resuelve mejor la problemática planteada?</li>
+          <li><span class="fase-tool">Pitching</span>Cada equipo defiende su solución — comunicación, argumentación y visión de equipo</li>
+          <li><span class="fase-tool">Post-Motorola</span>Retrospectiva grupal: qué funcionó, qué no, qué aprendemos y cómo mejoramos</li>
+          <li><span class="fase-tool">Certificados</span>Entrega de certificados de participación y reconocimiento de roles</li>
+        </ul>
+        <div class="fase-action">Compiten · Presentan · Aprenden</div>
       </div>
+
     </div>
   </div>
 </section>
